@@ -47,28 +47,23 @@ export interface ProjectionPoint {
   interest: number;
 }
 
-// 💖 Mini simulador de sueldos — profesiones genéricas, sin universidad
-// Cada chip: profesión arriba + ~sueldo debajo. Ingeniero > Analista datos (media ES)
-// Fuentes: Indeed, Jobted, WageIndicator, InfoJobs (net/mes aprox, brutos en tooltip)
+// 💖 Mini simulador — PROFESIONES ÚNICAS (sin Jr/Mid/Sr), opcional, ~sueldo debajo
+// Neutro 1000 por defecto, sin asignación obligatoria
 export const SALARY_PRESETS = [
-  { label: "Ing. Telecom", value: 1950, icon: "🛰️", detail: "27k brutos", source: "Indeed" },
-  { label: "Ing. Telecom Mid", value: 2650, icon: "📡", detail: "38k brutos", source: "Jobted" },
-  { label: "Ing. Telecom Sr", value: 3400, icon: "🚀", detail: "52k brutos", source: "InfoJobs", highlight: true },
-  { label: "Analista Datos Jr", value: 1550, icon: "📊", detail: "22k brutos", source: "ESERP" },
-  { label: "Analista Datos Mid", value: 1950, icon: "📈", detail: "28k brutos", source: "InfoJobs" },
-  { label: "Analista Datos Sr", value: 2500, icon: "💼", detail: "36k brutos", source: "Glassdoor" },
+  { label: "Ingeniería", value: 2100, icon: "🛰️", detail: "27k brutos", source: "Indeed" },
+  { label: "Análisis Datos", value: 1800, icon: "📊", detail: "24k brutos", source: "InfoJobs" },
   { label: "Enfermero/a", value: 1800, icon: "👩‍⚕️", detail: "28-35k", source: "OficinaEmpleo" },
   { label: "Docente", value: 1900, icon: "👩‍🏫", detail: "29-35k", source: "BOE" },
-  { label: "Dev Junior", value: 1750, icon: "💻", detail: "24-30k", source: "InfoJobs" },
-  { label: "Dev Senior", value: 3100, icon: "🧠", detail: "45-60k", source: "InfoJobs" },
+  { label: "Desarrollador", value: 2200, icon: "💻", detail: "30k brutos", source: "InfoJobs" },
   { label: "Marketing", value: 1650, icon: "📣", detail: "22-28k", source: "Adecco" },
-  { label: "Abogado/a Jr", value: 1600, icon: "⚖️", detail: "21-26k", source: "InfoJobs" },
+  { label: "Abogado/a", value: 1600, icon: "⚖️", detail: "21-26k", source: "InfoJobs" },
+  { label: "Comercial", value: 1700, icon: "🤝", detail: "23k brutos", source: "Adecco" },
 ] as const;
 
 export const QUICK_SALARY_PAIRS = [
-  { id: "pareja-joven", label: "Pareja joven 💜", a: 1950, b: 1550, note: "27k + 22k brutos" },
-  { id: "pareja-mid", label: "Pareja media ✨", a: 2650, b: 1950, note: "38k + 28k brutos" },
-  { id: "pareja-senior", label: "Pareja senior 🚀", a: 3400, b: 2500, note: "52k + 36k brutos" },
+  { id: "pareja-joven", label: "Pareja joven 💜", a: 1500, b: 1300, note: "22k + 20k" },
+  { id: "pareja-media", label: "Pareja media ✨", a: 2100, b: 1800, note: "27k + 24k" },
+  { id: "pareja-senior", label: "Pareja senior 🚀", a: 3000, b: 2600, note: "42k + 36k" },
 ] as const;
 
 // 💹 Rentabilidades reales anualizadas (Curvo.eu, Mitrade, HistoryOfMarket)
@@ -78,7 +73,7 @@ export const RETURN_PRESETS = [
     value: 2.8,
     profile: "conservative" as const,
     desc: "Bajo riesgo",
-    realNote: "Mejor cuenta ES 2025 ~2.5-3% TAE",
+    realNote: "Cuenta ES 2.5-3%",
     source: "Banco España",
     color: "#94a3b8",
   },
@@ -87,26 +82,26 @@ export const RETURN_PRESETS = [
     value: 8.4,
     profile: "balanced" as const,
     desc: "Recomendado 🌍",
-    realNote: "8.4% CAGR EUR 1970-2026 (Curvo)",
-    source: "Curvo.eu · 56 años",
+    realNote: "8.4% EUR 1970-2026",
+    source: "Curvo.eu",
     color: "#8b5cf6",
   },
   {
     label: "S&P 500",
     value: 10.3,
     profile: "balanced" as const,
-    desc: "USA · 500 empresas",
-    realNote: "10.3% nominal · 8.1% media aritmética 1928-2026",
-    source: "Bankkers/HistoryOfMarket",
+    desc: "USA 500",
+    realNote: "10.3% nominal",
+    source: "Bankkers",
     color: "#06b6d4",
   },
   {
     label: "Nasdaq 100",
     value: 12.0,
     profile: "aggressive" as const,
-    desc: "Tech · volátil 🚀",
-    realNote: "~12% histórico · -37% en 2008, +49% en 2023",
-    source: "FondosIndexados.net",
+    desc: "Tech 🚀",
+    realNote: "~12% hist.",
+    source: "FondosIndexados",
     color: "#ec4899",
   },
 ] as const;

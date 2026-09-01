@@ -31,7 +31,7 @@ export function Header() {
         <div className="flex items-center gap-2">
           <button
             onClick={() => {
-              if (confirm("¿Borrar todos los datos y volver a BA 1.900€ + Teleco 1.750€? 💔")) resetAll();
+              if (confirm("¿Borrar todo y volver a 1.000€ + 1.000€ neutral?")) resetAll();
             }}
             className="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-pink-50 dark:bg-zinc-800 text-pink-700 dark:text-zinc-300 text-sm font-bold hover:bg-pink-100 dark:hover:bg-zinc-700 transition border border-pink-100 dark:border-zinc-700 soft-font"
             title="Reset"

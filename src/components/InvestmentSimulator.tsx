@@ -88,8 +88,8 @@ export function InvestmentSimulator() {
               <button
                 key={p.label}
                 onClick={() => setInvestment({ ...investment, annualReturn: p.value })}
-                title={`${p.realNote} · Fuente: ${p.source}`}
-                className={`px-3 py-2.5 rounded-xl text-xs font-bold border transition text-left relative overflow-hidden ${
+                title={`${p.realNote} · ${p.source}`}
+                className={`px-3 py-3 rounded-2xl text-xs font-bold border transition text-left relative overflow-hidden min-h-[92px] flex flex-col justify-center ${
                   investment.annualReturn === p.value
                     ? "text-white border-transparent shadow-md"
                     : "bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700 hover:border-pink-200 hover:shadow-sm"
@@ -97,15 +97,16 @@ export function InvestmentSimulator() {
                 style={investment.annualReturn === p.value ? { background: p.color } : {}}
               >
                 {investment.annualReturn === p.value && <span className="absolute inset-0 shimmer opacity-20" />}
-                <div className="relative flex items-center gap-1">
-                  {p.label} {investment.annualReturn === p.value && <Heart className="h-3 w-3 fill-white" />}
+                <div className="relative flex items-center gap-1 text-sm leading-none truncate">
+                  {p.label} {investment.annualReturn === p.value && <Heart className="h-3 w-3 fill-white shrink-0" />}
                 </div>
-                <div className={`text-[11px] relative ${investment.annualReturn === p.value ? "text-white/90" : "text-zinc-500"}`}>
+                <div className={`text-xs relative font-black ${investment.annualReturn === p.value ? "text-white" : "text-zinc-700 dark:text-zinc-300"}`}>
                   {p.value}% · {p.desc}
                 </div>
-                <div className={`text-[10px] leading-tight mt-0.5 relative ${investment.annualReturn === p.value ? "text-white/70" : "text-zinc-400"}`}>
+                <div className={`text-[11px] leading-tight mt-0.5 relative truncate ${investment.annualReturn === p.value ? "text-white/80" : "text-zinc-500"}`}>
                   {p.realNote}
                 </div>
+                <div className={`text-[10px] relative ${investment.annualReturn === p.value ? "text-white/60" : "text-zinc-400"}`}>{p.source}</div>
               </button>
             ))}
           </div>

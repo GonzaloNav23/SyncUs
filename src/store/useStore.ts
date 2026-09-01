@@ -26,8 +26,8 @@ interface AppState {
 }
 
 const initial = {
-  partnerA: { name: "Alex · BA", salary: 1900 },
-  partnerB: { name: "Sam · Teleco", salary: 1750 },
+  partnerA: { name: "Gonzalo", salary: 1000 },
+  partnerB: { name: "Paula", salary: 1000 },
   expenses: [] as Expense[],
   dateFund: { balance: 120, monthlyBudget: 150, transactions: [] as DateFundTransaction[] },
   investment: { monthlyContribution: 400, annualReturn: 8.4 },
@@ -88,7 +88,7 @@ export const useStore = create<AppState>()(
       resetAll: () => set(initial),
     }),
     {
-      name: "syncus-storage-v2",
+      name: "syncus-storage-v4",
     }
   )
 );

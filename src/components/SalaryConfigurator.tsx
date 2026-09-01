@@ -99,40 +99,36 @@ export function SalaryConfigurator() {
         </button>
       </div>
 
-      {/* mini simulador único */}
-      <div className="mt-4 rounded-3xl bg-gradient-to-br from-pink-50 via-violet-50 to-cyan-50 dark:from-zinc-800/60 dark:to-zinc-800/40 border border-pink-100 dark:border-zinc-700 p-3 sm:p-4">
-        <div className="flex items-center justify-between mb-2">
+      {/* mini simulador único — opcional, neutral 1000 */}
+      <details className="mt-4 rounded-3xl bg-gradient-to-br from-pink-50 via-violet-50 to-cyan-50 dark:from-zinc-800/60 dark:to-zinc-800/40 border border-pink-100 dark:border-zinc-700 p-3 sm:p-4 group">
+        <summary className="list-none flex items-center justify-between cursor-pointer">
           <p className="text-xs font-black tracking-wide text-pink-600 dark:text-pink-300 flex items-center gap-1">
-            🎨 Inspírate <span className="handwriting font-normal text-zinc-500 text-sm">toca y se aplica a</span>
-            <span className={`px-2 py-0.5 rounded-full text-xs font-black ${active === "A" ? "bg-violet-600 text-white" : "bg-emerald-600 text-white"}`}>
-              {active === "A" ? partnerA.name || "Gonzalo" : partnerB.name || "Paula"}
-            </span>
+            🎨 Inspiración sueldos reales <span className="handwriting font-normal text-zinc-500 text-sm">opcional — toca si quieres</span>
           </p>
-          <span className="text-[11px] soft-font text-zinc-500">sueldo ~ debajo ↓</span>
+          <span className="text-[11px] soft-font text-zinc-500 group-open:hidden">▶ abrir</span>
+          <span className="text-[11px] soft-font text-zinc-500 hidden group-open:inline">▼ cerrar</span>
+        </summary>
+        <div className="mt-3 flex items-center justify-between">
+          <p className="text-[11px] soft-font text-zinc-500">Pulsa una profesión y se pone en <b className={active === "A" ? "text-violet-600" : "text-emerald-600"}>{active === "A" ? partnerA.name || "Gonzalo" : partnerB.name || "Paula"}</b> (selecciona arriba). 1000€ es neutro, eliges tú.</p>
         </div>
 
-        <div className="flex gap-2 overflow-x-auto snap-x snap-mandatory pb-2 -mx-1 px-1 scrollbar-thin">
-          {SALARY_PRESETS.map((p) => {
-            const isActive = (active === "A" ? partnerA.salary : partnerB.salary) === p.value;
-            return (
-              <button
-                key={p.label}
-                onClick={() => {
-                  if (active === "A") setPartnerA({ ...partnerA, salary: p.value });
-                  else setPartnerB({ ...partnerB, salary: p.value });
-                }}
-                title={`${p.detail} · ${p.source}`}
-                className={`snap-center shrink-0 w-[108px] rounded-2xl border-2 p-2.5 flex flex-col items-center text-center gap-1 transition hover:scale-[1.03] ${isActive ? "border-pink-300 bg-white dark:bg-zinc-900 shadow-lg romance-gradient text-white border-transparent" : "bg-white dark:bg-zinc-900 border-pink-100 dark:border-zinc-700 hover:border-pink-200 shadow-sm"}`}
-              >
-                <span className="text-xl">{p.icon}</span>
-                <span className={`text-[11px] font-black leading-tight ${isActive ? "text-white" : "text-zinc-900 dark:text-white"}`}>{p.label}</span>
-                <span className={`text-xs font-black soft-font px-2 py-0.5 rounded-full ${isActive ? "bg-white/20 text-white" : "bg-pink-50 dark:bg-pink-900/20 text-pink-600 dark:text-pink-300"}`}>
-                  ~{p.value}€
-                </span>
-                <span className={`text-[10px] leading-none ${isActive ? "text-white/80" : "text-zinc-400"}`}>{p.detail}</span>
-              </button>
-            );
-          })}
+        <div className="mt-2 flex gap-2 overflow-x-auto snap-x snap-mandatory pb-2 -mx-1 px-1">
+          {SALARY_PRESETS.map((p) => (
+            <button
+              key={p.label}
+              onClick={() => {
+                if (active === "A") setPartnerA({ ...partnerA, salary: p.value });
+                else setPartnerB({ ...partnerB, salary: p.value });
+              }}
+              title={`${p.detail} · ${p.source}`}
+              className="snap-center shrink-0 w-[108px] rounded-2xl border bg-white dark:bg-zinc-900 border-pink-100 dark:border-zinc-700 hover:border-pink-300 shadow-sm p-2.5 flex flex-col items-center text-center gap-1 transition hover:scale-[1.03] hover:shadow-md"
+            >
+              <span className="text-xl">{p.icon}</span>
+              <span className="text-[11px] font-black leading-tight text-zinc-900 dark:text-white">{p.label}</span>
+              <span className="text-xs font-black soft-font px-2 py-0.5 rounded-full bg-pink-50 dark:bg-pink-900/20 text-pink-600 dark:text-pink-300">~{p.value}€</span>
+              <span className="text-[10px] leading-none text-zinc-400">{p.detail}</span>
+            </button>
+          ))}
         </div>
 
         <div className="mt-2 flex flex-wrap gap-1.5">
@@ -149,7 +145,7 @@ export function SalaryConfigurator() {
             </button>
           ))}
         </div>
-      </div>
+      </details>
 
       {/* Result bar con más vida */}
       <div className="mt-5 relative">
