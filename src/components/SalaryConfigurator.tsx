@@ -16,13 +16,13 @@ export function SalaryConfigurator() {
     current: number;
     onPick: (v: number) => void;
   }) => (
-    <div className="flex flex-wrap gap-1.5">
+    <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
       {SALARY_PRESETS.map((p) => (
         <button
           key={p.label}
           onClick={() => onPick(p.value)}
           title={`${p.detail} · fuente: ${p.source}`}
-          className={`group relative px-2.5 py-1.5 rounded-full text-xs font-medium border transition flex items-center gap-1 ${
+          className={`group relative px-3 py-2 rounded-2xl text-xs font-bold border transition flex flex-col items-center text-center leading-tight ${
             // @ts-ignore highlight prop
             (p as any).highlight ? "ring-1 ring-pink-200" : ""
           } ${
@@ -31,13 +31,16 @@ export function SalaryConfigurator() {
               : "bg-white dark:bg-zinc-800 border-zinc-200 dark:border-zinc-700 hover:border-pink-300 dark:hover:border-pink-700 hover:shadow-sm"
           }`}
         >
-          <span className="text-[11px]">{p.icon}</span> {p.label} · {p.value}€
-          {/* highlight dot */}
-          {/* @ts-ignore */}
-          {(p as any).highlight && current !== p.value && (
-            <span className="ml-0.5 h-1.5 w-1.5 rounded-full bg-pink-400 animate-pulse" />
-          )}
-          {current === p.value && <Sparkles className="h-3 w-3 ml-0.5 opacity-80" />}
+          <span className="flex items-center gap-1">
+            <span className="text-sm">{p.icon}</span>
+            <span className="text-[11px] leading-tight">{p.label}</span>
+            {current === p.value && <Sparkles className="h-3 w-3 opacity-80 shrink-0" />}
+          </span>
+          <span className={`text-[11px] font-black soft-font ${current === p.value ? "text-white" : "text-pink-600 dark:text-pink-400"}`}>
+            {/* @ts-ignore */}
+            {(p as any).approx ?? `~${p.value}€`}
+          </span>
+          <span className={`text-[10px] leading-none ${current === p.value ? "text-white/80" : "text-zinc-400"}`}>{p.detail.split("·")[0]}</span>
         </button>
       ))}
     </div>
@@ -59,9 +62,9 @@ export function SalaryConfigurator() {
             <Heart className="h-4 w-4 text-pink-500 fill-pink-500 animate-heartbeat" />
           </h2>
           <p className="text-xs soft-font text-zinc-500 leading-snug">
-            Salarios <b>netos/mes</b> reales España 2024-25 · fuentes: Jobted, Glassdoor, UFV, HuffPost{" "}
+            Mini-simulador: elige profesión y ve el sueldo aprox debajo · fuentes: Indeed, Jobted, Glassdoor, WageIndicator{" "}
             <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 text-[11px]">
-              <GraduationCap className="h-3 w-3" /> BA + Teleco destacado
+              <GraduationCap className="h-3 w-3" /> Teleco UCM {'>'} Europea BA
             </span>
           </p>
         </div>
@@ -97,14 +100,14 @@ export function SalaryConfigurator() {
         <div className="rounded-2xl bg-gradient-to-br from-violet-50 to-fuchsia-50 dark:from-zinc-800/50 dark:to-zinc-800/50 p-4 border border-violet-100 dark:border-zinc-800">
           <label className="text-xs font-bold uppercase tracking-widest text-violet-600 dark:text-violet-300 flex items-center gap-1">
             <span className="h-5 w-5 rounded-full bg-violet-600 text-white grid place-items-center text-[10px]">A</span> Persona A
-            <span className="handwriting normal-case tracking-normal text-pink-500 text-sm ml-1">tú 💜</span>
+            <span className="handwriting normal-case tracking-normal text-pink-500 text-sm ml-1">Gonzalo 💜</span>
           </label>
           <div className="mt-1 flex items-center gap-2">
             <input
               value={partnerA.name}
               onChange={(e) => setPartnerA({ ...partnerA, name: e.target.value })}
               className="flex-1 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-violet-400 soft-font"
-              placeholder="Nombre (ej. Alex - BA)"
+              placeholder="Gonzalo"
             />
           </div>
           <div className="mt-2 flex items-center gap-2">
@@ -129,13 +132,13 @@ export function SalaryConfigurator() {
         <div className="rounded-2xl bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-zinc-800/50 dark:to-zinc-800/50 p-4 border border-emerald-100 dark:border-zinc-800">
           <label className="text-xs font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-300 flex items-center gap-1">
             <span className="h-5 w-5 rounded-full bg-emerald-600 text-white grid place-items-center text-[10px]">B</span> Persona B
-            <span className="handwriting normal-case tracking-normal text-pink-500 text-sm ml-1">amor 🛰️</span>
+            <span className="handwriting normal-case tracking-normal text-pink-500 text-sm ml-1">Paula 🛰️</span>
           </label>
           <input
             value={partnerB.name}
             onChange={(e) => setPartnerB({ ...partnerB, name: e.target.value })}
             className="mt-1 w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-xl px-3 py-2 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-400 soft-font"
-            placeholder="Nombre (ej. Sam - Teleco)"
+            placeholder="Paula"
           />
           <div className="mt-2 flex items-center gap-2">
             <span className="text-sm font-black text-emerald-600">€</span>

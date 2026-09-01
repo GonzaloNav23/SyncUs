@@ -245,7 +245,28 @@ export function InvestmentSimulator() {
           );
         })}
       </div>
-      <p className="mt-2 text-center handwriting text-pink-500 text-sm">
+          <div className="mt-4 rounded-2xl bg-zinc-900 text-white p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <div>
+            <p className="text-sm font-black flex items-center gap-1">📈 Gráficos reales históricos <span className="handwriting font-normal text-pink-300">MSCI · S&P · Nasdaq</span></p>
+            <p className="text-xs soft-font opacity-70">Ver evolución 1970-2026 en Curvo.eu y simula “¿y si hubieras empezado en 2008/2019?” con el slider de años.</p>
+          </div>
+          <a
+            href="https://curvo.eu/backtest/es/indice/msci-world"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-4 py-2 rounded-full bg-white text-zinc-900 text-xs font-black hover:bg-pink-50 transition shrink-0"
+          >
+            Abrir gráfico real → MSCI World
+          </a>
+        </div>
+        <div className="mt-2 flex gap-2 text-xs soft-font">
+          <a href="https://curvo.eu/backtest/es/indice/sp-500" target="_blank" className="underline text-zinc-500">S&P 500 histórico</a>
+          <span className="text-zinc-300">·</span>
+          <a href="https://curvo.eu/backtest/es/indice/nasdaq-100" target="_blank" className="underline text-zinc-500">Nasdaq 100</a>
+          <span className="text-zinc-300">·</span>
+          <span className="text-zinc-400">Cálculo esperado con tu aportación + interés compuesto, no garantía.</span>
+        </div>
+        <p className="mt-2 text-center handwriting text-pink-500 text-sm">
         Cada mes juntos es una semilla 🌱 — en 20 años, ¡vuestra historia también da frutos!
       </p>
     </section>

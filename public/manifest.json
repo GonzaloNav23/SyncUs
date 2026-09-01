@@ -1,23 +1,54 @@
 {
-  "name": "SyncUs — Couples Finance & Investment Hub",
+  "name": "SyncUs — Couples Finance & Investment Hub 💜",
   "short_name": "SyncUs",
-  "description": "Finanzas en pareja: reparto proporcional, bote de citas y simulador de inversión.",
-  "start_url": "/",
+  "description": "Reparto proporcional con sueldos reales ES (Teleco UCM > Europea BA), bote de citas y simulador MSCI/S&P/Nasdaq reales. Para Gonzalo & Paula.",
+  "start_url": "/SyncUs/",
+  "scope": "/SyncUs/",
   "display": "standalone",
-  "background_color": "#7c3aed",
-  "theme_color": "#7c3aed",
+  "display_override": ["window-controls-overlay", "standalone"],
+  "orientation": "portrait",
+  "background_color": "#fff7f9",
+  "theme_color": "#ec4899",
+  "categories": ["finance", "lifestyle"],
+  "lang": "es",
   "icons": [
     {
-      "src": "/icon-192.png",
+      "src": "/SyncUs/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/icon-512.png",
+      "src": "/SyncUs/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
+    },
+    {
+      "src": "/SyncUs/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/SyncUs/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Reparto",
+      "url": "/SyncUs/#reparto",
+      "icons": [{ "src": "/SyncUs/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Invertir",
+      "url": "/SyncUs/#invertir",
+      "icons": [{ "src": "/SyncUs/icon-192.png", "sizes": "192x192" }]
     }
   ]
 }

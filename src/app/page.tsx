@@ -5,6 +5,7 @@ import { ExpenseManager } from "@/components/ExpenseManager";
 import { DateFund } from "@/components/DateFund";
 import { InvestmentSimulator } from "@/components/InvestmentSimulator";
 import { GuiltyPleasure } from "@/components/GuiltyPleasure";
+import { MobileNav } from "@/components/MobileNav";
 
 export default function Home() {
   return (
@@ -22,8 +23,8 @@ export default function Home() {
                   Finanzas en pareja, <span className="handwriting font-normal text-2xl sm:text-3xl">sin drama</span> <span className="animate-heartbeat">💜</span>
                 </h2>
                 <p className="text-sm sm:text-[15px] opacity-95 mt-1 max-w-2xl leading-relaxed soft-font">
-                  Para <b>Business Analytics 📊 + Teleco 🛰️</b> · reparto con sueldos reales ES, citas con hucha romántica y
-                  vuestra libertad financiera con datos del <b>MSCI World, S&P500 y Nasdaq</b> reales.
+                  Para <b>Gonzalo 🛰️ Teleco UCM + Paula 📊 Europea BA</b> · reparto con sueldos reales ES (Teleco {'>'} BA), citas con hucha romántica y
+                  libertad financiera con <b>MSCI World, S&P500 y Nasdaq</b> reales + backtest.
                 </p>
                 <p className="handwriting text-lg opacity-90 mt-1">hecho para vosotros dos ✨</p>
               </div>
@@ -31,7 +32,7 @@ export default function Home() {
                 <div className="flex items-center gap-2 text-xs font-black bg-white/20 backdrop-blur rounded-full px-4 py-2 soft-font">
                   <span className="h-2 w-2 rounded-full bg-emerald-300 animate-pulse" /> 100% local · PWA · sin backend
                 </div>
-                <span className="text-[11px] bg-white text-pink-600 px-3 py-1 rounded-full font-bold soft-font">💑 BA 1.900€ · Teleco 1.750€ · neto/mes</span>
+                <span className="text-[11px] bg-white text-pink-600 px-3 py-1 rounded-full font-bold soft-font">💑 Gonzalo 1.950€ · Paula 1.550€ · neto/mes</span>
               </div>
             </div>
           </div>
@@ -40,14 +41,14 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           {/* Left column */}
           <div className="lg:col-span-7 space-y-6">
-            <SalaryConfigurator />
-            <ExpenseManager />
-            <GuiltyPleasure />
+            <div id="reparto"><SalaryConfigurator /></div>
+            <div id="gastos"><ExpenseManager /></div>
+            <div id="capricho"><GuiltyPleasure /></div>
           </div>
           {/* Right column */}
           <div className="lg:col-span-5 space-y-6">
-            <DateFund />
-            <InvestmentSimulator />
+            <div id="citas"><DateFund /></div>
+            <div id="invertir"><InvestmentSimulator /></div>
             {/* Tips card */}
             <div className="rounded-[20px] bg-white dark:bg-zinc-900 border border-pink-100 dark:border-zinc-800 p-5 relative overflow-hidden">
               <div className="absolute -right-6 -top-6 h-20 w-20 rounded-full bg-pink-100 blur-2xl opacity-40" />
@@ -55,9 +56,8 @@ export default function Home() {
                 💡 Cómo funciona <span className="handwriting font-normal text-pink-600 text-base">vuestra</span> proporcionalidad
               </h3>
               <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-2 leading-relaxed soft-font">
-                Si <b>Alex · BA (1.900€)</b> y <b>Sam · Teleco (1.750€)</b> = <b>3.650€</b>, Alex aporta <b>52.1%</b> y Sam <b>47.9%</b>.
-                Alquiler 1.200€ → <b>625€ / 575€</b> en lugar de 600/600. Con sueldos medios reales (BA Mid 2.400€ + Teleco 1.960€) sería{" "}
-                <b>55% / 45%</b> → 660€/540€.
+                Si <b>Gonzalo · Teleco 1.950€</b> y <b>Paula · BA 1.550€</b> = <b>3.500€</b>, Gonzalo aporta <b>55.7%</b> y Paula <b>44.3%</b>.
+                Alquiler 1.200€ → <b>669€ / 531€</b> en lugar de 600/600. En mid (Teleco 2.650€ + BA 1.950€) sería <b>57.6% / 42.4%</b> → 691€/509€.
               </p>
               <div className="mt-3 flex flex-wrap gap-2 text-xs soft-font">
                 <span className="px-2.5 py-1 rounded-full bg-pink-50 dark:bg-pink-900/20 text-pink-700 dark:text-pink-300 font-bold border border-pink-100 dark:border-pink-900/30">
@@ -72,11 +72,13 @@ export default function Home() {
           </div>
         </div>
 
-        <footer className="mt-10 text-center pb-6">
-          <p className="handwriting text-pink-500 text-lg">Hecho con 💜 para parejas que construyen futuro juntas</p>
-          <p className="text-xs text-zinc-400 soft-font mt-1">SyncUs v2 · romance + datos reales · BA 📊 + Teleco 🛰️ · Datos guardados en tu navegador</p>
+        <footer className="mt-10 text-center pb-24 lg:pb-6">
+          <p className="handwriting text-pink-500 text-lg">Hecho con 💜 para Gonzalo & Paula</p>
+          <p className="text-xs text-zinc-400 soft-font mt-1">SyncUs v3 · Teleco UCM {'>'} Europea BA · móvil PWA lista para App Store / Play Store · Datos en tu navegador</p>
+          <p className="text-[11px] text-zinc-400 soft-font mt-2">Instalable: en móvil abre gonzalonav23.github.io/SyncUs → Compartir → Añadir a pantalla de inicio. Para stores, wrapper Capacitor disponible.</p>
         </footer>
       </main>
+      <MobileNav />
     </>
   );
 }

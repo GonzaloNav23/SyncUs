@@ -2,7 +2,8 @@
 import { useState } from "react";
 import { useStore } from "@/store/useStore";
 import { calculateBalance, calculateProportionalSplit, formatEUR } from "@/lib/calculations";
-import { Receipt, Plus, Trash2, Scale, ArrowRight } from "lucide-react";
+import { EXPENSE_PRESETS } from "@/types";
+import { Receipt, Plus, Trash2, Scale, ArrowRight, Sparkles } from "lucide-react";
 
 export function ExpenseManager() {
   const { partnerA, partnerB, expenses, addExpense, removeExpense } = useStore();
@@ -42,10 +43,36 @@ export function ExpenseManager() {
         </div>
       </div>
 
+      {/* Presets largos */}
+      <div className="mb-3">
+        <p className="text-[11px] font-bold uppercase tracking-widest text-zinc-500 mb-1.5 flex items-center gap-1">
+          <Sparkles className="h-3 w-3 text-pink-500" /> Gastos frecuentes <span className="font-normal normal-case soft-font text-pink-500">pulsa para añadir rápido</span>
+        </p>
+        <div className="flex flex-wrap gap-1.5 max-h-[86px] overflow-auto p-1">
+          {EXPENSE_PRESETS.map((p) => (
+            <button
+              key={p.label}
+              onClick={() => {
+                setConcept(p.label);
+                setAmount(p.amount);
+              }}
+              className={`px-2.5 py-1.5 rounded-full text-xs font-bold border flex items-center gap-1 transition ${
+                concept === p.label && amount === p.amount
+                  ? "bg-amber-500 text-white border-amber-500 shadow"
+                  : "bg-white dark:bg-zinc-800 border-zinc-200 dark:border-zinc-700 hover:border-amber-300 hover:shadow-sm"
+              }`}
+              title={`${p.category} · ~${p.amount}€`}
+            >
+              <span>{p.icon}</span> {p.label} <span className="opacity-60">· {p.amount}€</span>
+            </button>
+          ))}
+        </div>
+        <p className="text-[11px] text-zinc-400 soft-font mt-1">O escribe uno diferente abajo — puedes añadir cualquier concepto custom.</p>
+      </div>
       {/* Quick add */}
       <div className="grid grid-cols-12 gap-2">
         <input
-          placeholder="Concepto (ej. Mercadona, Alquiler)"
+          placeholder="Concepto (ej. Mercadona, Alquiler) o custom"
           value={concept}
           onChange={(e) => setConcept(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && submit()}
