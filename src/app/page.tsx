@@ -6,12 +6,27 @@ import { DateFund } from "@/components/DateFund";
 import { InvestmentSimulator } from "@/components/InvestmentSimulator";
 import { GuiltyPleasure } from "@/components/GuiltyPleasure";
 import { MobileNav } from "@/components/MobileNav";
+import { useStore } from "@/store/useStore";
+import { calculateProportionalSplit, formatEUR } from "@/lib/calculations";
 
 export default function Home() {
+  const { partnerA, partnerB } = useStore();
+  const { pctA, pctB } = calculateProportionalSplit(partnerA.salary, partnerB.salary);
+  const total = partnerA.salary + partnerB.salary;
+  const nameA = partnerA.name || "Gonzalo";
+  const nameB = partnerB.name || "Paula";
   return (
     <>
       <Header />
-      <main className="flex-1 max-w-6xl mx-auto w-full px-4 sm:px-6 py-6 sm:py-8">
+      {/* fondo animado más vivo y grande */}
+      <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+        <div className="absolute inset-0 bg-[#fff7f9] dark:bg-zinc-950" />
+        <div className="absolute -top-32 -left-32 h-[520px] w-[520px] rounded-full bg-gradient-to-br from-pink-200 via-fuchsia-200 to-violet-200 blur-[80px] opacity-50 animate-float" />
+        <div className="absolute top-1/3 -right-32 h-[600px] w-[600px] rounded-full bg-gradient-to-br from-cyan-100 via-teal-100 to-emerald-100 blur-[90px] opacity-40" style={{ animation: "float-heart 5s ease-in-out infinite" }} />
+        <div className="absolute bottom-0 left-1/4 h-[700px] w-[700px] rounded-full bg-gradient-to-br from-amber-100 via-pink-100 to-rose-100 blur-[100px] opacity-40" style={{ animation: "float-heart 7s ease-in-out infinite reverse" }} />
+        <div className="absolute inset-0 romance-gradient opacity-[0.03]" />
+      </div>
+      <main className="flex-1 max-w-6xl mx-auto w-full px-4 sm:px-6 py-6 sm:py-8 text-[15.5px]">
         {/* Hero */}
         <div className="rounded-[28px] romance-gradient p-[1.5px] mb-6 shadow-lg">
           <div className="rounded-[26px] romance-gradient px-6 py-6 sm:px-8 sm:py-7 text-white relative overflow-hidden">
@@ -33,7 +48,7 @@ export default function Home() {
                 <div className="flex items-center gap-2 text-xs font-black bg-white/20 backdrop-blur rounded-full px-4 py-2 soft-font">
                   <span className="h-2 w-2 rounded-full bg-emerald-300 animate-pulse" /> 100% local · PWA · sin backend
                 </div>
-                <span className="text-[11px] bg-white text-pink-600 px-3 py-1 rounded-full font-bold soft-font">💜 Gonzalo & Paula · vuestra historia financiera</span>
+                <span className="text-[11px] bg-white text-pink-600 px-3 py-1 rounded-full font-bold soft-font">💜 {nameA} & {nameB} · vuestra historia financiera</span>
               </div>
             </div>
           </div>
@@ -57,8 +72,8 @@ export default function Home() {
                 💡 Cómo funciona <span className="handwriting font-normal text-pink-600 text-base">vuestra</span> proporcionalidad
               </h3>
               <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-2 leading-relaxed soft-font">
-                Si <b>Gonzalo 1.950€</b> y <b>Paula 1.550€</b> = <b>3.500€</b>, Gonzalo aporta <b>55.7%</b> y Paula <b>44.3%</b>.
-                Alquiler 1.200€ → <b>669€ / 531€</b> en lugar de 600/600. Pruébalo con vuestros sueldos arriba: ¡verás la magia del reparto justo!
+                Si <b>{nameA} {formatEUR(partnerA.salary)}</b> y <b>{nameB} {formatEUR(partnerB.salary)}</b> = <b>{formatEUR(total)}</b>, {nameA} aporta <b>{pctA.toFixed(1)}%</b> y {nameB} <b>{pctB.toFixed(1)}%</b>.
+                Alquiler 1.200€ → <b>{(1200 * pctA / 100).toFixed(0)}€ / {(1200 * pctB / 100).toFixed(0)}€</b> en lugar de 600/600. Pruébalo con vuestros sueldos arriba: ¡verás la magia del reparto justo!
               </p>
               <div className="mt-3 flex flex-wrap gap-2 text-xs soft-font">
                 <span className="px-2.5 py-1 rounded-full bg-pink-50 dark:bg-pink-900/20 text-pink-700 dark:text-pink-300 font-bold border border-pink-100 dark:border-pink-900/30">
@@ -74,7 +89,7 @@ export default function Home() {
         </div>
 
         <footer className="mt-10 text-center pb-24 lg:pb-6">
-          <p className="handwriting text-pink-500 text-lg">Hecho con 💜 para Gonzalo & Paula</p>
+          <p className="handwriting text-pink-500 text-lg">Hecho con 💜 para {nameA} & {nameB}</p>
           <p className="text-xs text-zinc-400 soft-font mt-1">SyncUs v4 · más vida, más color, más amor · móvil PWA lista para App Store / Play Store</p>
           <p className="text-[11px] text-zinc-400 soft-font mt-2">Instalable: en móvil abre gonzalonav23.github.io/SyncUs → Compartir → Añadir a pantalla de inicio</p>
         </footer>
