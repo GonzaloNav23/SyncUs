@@ -2,23 +2,25 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #fafafa;
+  --background: #fff7f9;
   --foreground: #18181b;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-outfit);
+  --font-hand: var(--font-caveat);
+  --font-logo: var(--font-pacifico);
+  --font-soft: var(--font-quicksand);
 }
 
-* { scrollbar-width: thin; }
+* { scrollbar-width: thin; scrollbar-color: #f472b6 #fff1f2; }
 html { scroll-behavior: smooth; }
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-outfit), var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 .dark body {
@@ -30,8 +32,65 @@ body {
 input[type="range"] {
   height: 6px;
   border-radius: 9999px;
-  background: #e4e4e7;
+  background: #fce7f3;
 }
 .dark input[type="range"] {
   background: #27272a;
+}
+
+/* romance animations */
+@keyframes float-heart {
+  0%,100% { transform: translateY(0) rotate(-6deg); }
+  50% { transform: translateY(-6px) rotate(4deg); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes heartbeat {
+  0%,100% { transform: scale(1); }
+  15% { transform: scale(1.08); }
+  30% { transform: scale(0.96); }
+  45% { transform: scale(1.06); }
+}
+@keyframes sparkle {
+  0%,100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.animate-float { animation: float-heart 3.2s ease-in-out infinite; }
+.animate-heartbeat { animation: heartbeat 1.6s ease-in-out infinite; }
+.animate-sparkle { animation: sparkle 2s ease-in-out infinite; }
+.romance-gradient {
+  background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 35%, #06b6d4 75%, #f43f5e 100%);
+  background-size: 300% 300%;
+  animation: gradient-shift 8s ease infinite;
+}
+.shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2.2s linear infinite;
+}
+.handwriting { font-family: var(--font-caveat), cursive; }
+.logo-font { font-family: var(--font-pacifico), cursive; }
+.soft-font { font-family: var(--font-quicksand), sans-serif; }
+
+/* glass card */
+.glass {
+  backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.72);
+}
+.dark .glass { background: rgba(24,24,27,0.6); }
+
+/* confetti dots */
+.confetti {
+  background-image:
+    radial-gradient(circle at 10% 20%, #f472b6 0 2px, transparent 2px),
+    radial-gradient(circle at 80% 15%, #8b5cf6 0 1.5px, transparent 1.5px),
+    radial-gradient(circle at 45% 90%, #fb7185 0 2px, transparent 2px),
+    radial-gradient(circle at 90% 85%, #e879f9 0 1.5px, transparent 1.5px);
 }

@@ -15,12 +15,12 @@ export function DateFund() {
     <section className="rounded-[20px] bg-gradient-to-br from-pink-500 via-rose-500 to-orange-400 p-[1px] shadow-sm">
       <div className="rounded-[19px] bg-white dark:bg-zinc-900 p-5 sm:p-6">
         <div className="flex items-center gap-2 mb-4">
-          <div className="h-8 w-8 rounded-lg bg-pink-100 dark:bg-pink-900/30 flex items-center justify-center text-pink-600">
-            <Heart className="h-4 w-4 fill-pink-600" />
+          <div className="h-8 w-8 rounded-lg bg-pink-100 dark:bg-pink-900/30 flex items-center justify-center text-pink-600 animate-float">
+            <Heart className="h-4 w-4 fill-pink-600 animate-heartbeat" />
           </div>
           <div className="flex-1">
-            <h2 className="font-semibold text-zinc-900 dark:text-white">Bote de Citas Sorpresa</h2>
-            <p className="text-xs text-zinc-500">Para cenas y planes sin culpa</p>
+            <h2 className="font-black text-zinc-900 dark:text-white flex items-center gap-1">Bote de Citas <span className="handwriting text-pink-600 font-normal text-lg">sorpresa</span> ✨</h2>
+            <p className="text-xs soft-font text-zinc-500">Para cenas y planes sin culpa · vuestra hucha romántica</p>
           </div>
           <div className="text-right">
             <p className="text-xs text-zinc-500">Objetivo mes</p>
