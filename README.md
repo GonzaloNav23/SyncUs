@@ -16,6 +16,8 @@
 
 > **Finanzas en pareja, sin discusiones.** Reparto proporcional al salario, gastos liquidados al instante, bote para citas y proyección de vuestra libertad financiera.
 
+**🌐 Demo en vivo:** **https://gonzalonav23.github.io/SyncUs/**
+
 ![SyncUs preview](https://via.placeholder.com/1200x600/7c3aed/ffffff?text=SyncUs+Preview+%7C+Mobile+First+%2B+Dark+Mode)
 
 ---
@@ -91,8 +93,8 @@ syncus/
 
 ```bash
 # 1. Clonar
-git clone https://github.com/TU_USUARIO/syncus.git
-cd syncus
+git clone https://github.com/GonzaloNav23/SyncUs.git
+cd SyncUs
 
 # 2. Instalar
 npm install
