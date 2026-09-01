@@ -23,16 +23,17 @@ export default function Home() {
                   Finanzas en pareja, <span className="handwriting font-normal text-2xl sm:text-3xl">sin drama</span> <span className="animate-heartbeat">💜</span>
                 </h2>
                 <p className="text-sm sm:text-[15px] opacity-95 mt-1 max-w-2xl leading-relaxed soft-font">
-                  Para <b>Gonzalo 🛰️ Teleco UCM + Paula 📊 Europea BA</b> · reparto con sueldos reales ES (Teleco {'>'} BA), citas con hucha romántica y
-                  libertad financiera con <b>MSCI World, S&P500 y Nasdaq</b> reales + backtest.
+                  Reparto proporcional justo, citas con hucha romántica y libertad financiera con <b>MSCI World, S&P500 y Nasdaq</b> reales + backtest.
+                  <br />
+                  <span className="bg-white text-pink-600 px-2 py-0.5 rounded-full text-xs font-black">Minimiza discusiones, maximiza sueños ✨</span>
                 </p>
-                <p className="handwriting text-lg opacity-90 mt-1">hecho para vosotros dos ✨</p>
+                <p className="handwriting text-lg opacity-90 mt-1">hecho para vosotros dos por vosotros dos 💑</p>
               </div>
               <div className="flex flex-col items-start sm:items-end gap-2 self-start sm:self-auto">
                 <div className="flex items-center gap-2 text-xs font-black bg-white/20 backdrop-blur rounded-full px-4 py-2 soft-font">
                   <span className="h-2 w-2 rounded-full bg-emerald-300 animate-pulse" /> 100% local · PWA · sin backend
                 </div>
-                <span className="text-[11px] bg-white text-pink-600 px-3 py-1 rounded-full font-bold soft-font">💑 Gonzalo 1.950€ · Paula 1.550€ · neto/mes</span>
+                <span className="text-[11px] bg-white text-pink-600 px-3 py-1 rounded-full font-bold soft-font">💜 Gonzalo & Paula · vuestra historia financiera</span>
               </div>
             </div>
           </div>
@@ -56,8 +57,8 @@ export default function Home() {
                 💡 Cómo funciona <span className="handwriting font-normal text-pink-600 text-base">vuestra</span> proporcionalidad
               </h3>
               <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-2 leading-relaxed soft-font">
-                Si <b>Gonzalo · Teleco 1.950€</b> y <b>Paula · BA 1.550€</b> = <b>3.500€</b>, Gonzalo aporta <b>55.7%</b> y Paula <b>44.3%</b>.
-                Alquiler 1.200€ → <b>669€ / 531€</b> en lugar de 600/600. En mid (Teleco 2.650€ + BA 1.950€) sería <b>57.6% / 42.4%</b> → 691€/509€.
+                Si <b>Gonzalo 1.950€</b> y <b>Paula 1.550€</b> = <b>3.500€</b>, Gonzalo aporta <b>55.7%</b> y Paula <b>44.3%</b>.
+                Alquiler 1.200€ → <b>669€ / 531€</b> en lugar de 600/600. Pruébalo con vuestros sueldos arriba: ¡verás la magia del reparto justo!
               </p>
               <div className="mt-3 flex flex-wrap gap-2 text-xs soft-font">
                 <span className="px-2.5 py-1 rounded-full bg-pink-50 dark:bg-pink-900/20 text-pink-700 dark:text-pink-300 font-bold border border-pink-100 dark:border-pink-900/30">
@@ -74,8 +75,8 @@ export default function Home() {
 
         <footer className="mt-10 text-center pb-24 lg:pb-6">
           <p className="handwriting text-pink-500 text-lg">Hecho con 💜 para Gonzalo & Paula</p>
-          <p className="text-xs text-zinc-400 soft-font mt-1">SyncUs v3 · Teleco UCM {'>'} Europea BA · móvil PWA lista para App Store / Play Store · Datos en tu navegador</p>
-          <p className="text-[11px] text-zinc-400 soft-font mt-2">Instalable: en móvil abre gonzalonav23.github.io/SyncUs → Compartir → Añadir a pantalla de inicio. Para stores, wrapper Capacitor disponible.</p>
+          <p className="text-xs text-zinc-400 soft-font mt-1">SyncUs v4 · más vida, más color, más amor · móvil PWA lista para App Store / Play Store</p>
+          <p className="text-[11px] text-zinc-400 soft-font mt-2">Instalable: en móvil abre gonzalonav23.github.io/SyncUs → Compartir → Añadir a pantalla de inicio</p>
         </footer>
       </main>
       <MobileNav />

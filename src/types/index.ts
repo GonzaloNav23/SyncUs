@@ -47,31 +47,28 @@ export interface ProjectionPoint {
   interest: number;
 }
 
-// 🇪🇸 Mini-simulador de profesiones — sueldos NETOS/mes reales España 2024-2025
-// Teleco UCM > Gestión Empresarial Europea (recién egresados, fuentes Indeed/Jobted/WageIndicator vs ESERP/INE)
-// Cada chip muestra PROFESIÓN arriba y ~sueldo debajo
+// 💖 Mini simulador de sueldos — profesiones genéricas, sin universidad
+// Cada chip: profesión arriba + ~sueldo debajo. Ingeniero > Analista datos (media ES)
+// Fuentes: Indeed, Jobted, WageIndicator, InfoJobs (net/mes aprox, brutos en tooltip)
 export const SALARY_PRESETS = [
-  // Teleco Complu
-  { label: "Ing. Teleco UCM · Jr", value: 1950, icon: "🛰️", detail: "27k brutos · 22-28k recién graduado Madrid", source: "Indeed/WageIndicator", approx: "~1.950€" },
-  { label: "Ing. Teleco UCM · Mid", value: 2650, icon: "📡", detail: "38k brutos · 29-48k rango Madrid", source: "Indeed/Jobted", approx: "~2.650€" },
-  { label: "Ing. Teleco UCM · Sr", value: 3400, icon: "🚀", detail: "52k brutos · hasta 60k", source: "Jobted/InfoJobs", approx: "~3.400€", highlight: true },
-  // Gestión Empresarial Europea (Business Analytics)
-  { label: "Gest. Empresarial Europea · Jr", value: 1550, icon: "📊", detail: "22k brutos · ADE 22-26k inicial", source: "ESERP/INE", approx: "~1.550€" },
-  { label: "Gest. Empresarial Europea · Mid", value: 1950, icon: "📈", detail: "27k brutos · 30k media ADE", source: "INE/InfoJobs", approx: "~1.950€" },
-  { label: "Gest. Empresarial Europea · Sr", value: 2450, icon: "💼", detail: "36k brutos", source: "Glassdoor", approx: "~2.450€" },
-  // Otras profesiones para simular
-  { label: "Enfermero/a", value: 1800, icon: "👩‍⚕️", detail: "28-35k brutos", source: "OficinaEmpleo", approx: "~1.800€" },
-  { label: "Docente Secundaria", value: 1900, icon: "👩‍🏫", detail: "29-35k brutos", source: "BOE", approx: "~1.900€" },
-  { label: "Dev Junior", value: 1750, icon: "💻", detail: "24-30k brutos", source: "InfoJobs", approx: "~1.750€" },
-  { label: "Dev Senior", value: 3100, icon: "🧠", detail: "45-60k brutos", source: "InfoJobs", approx: "~3.100€" },
-  { label: "Marketing / Comercial", value: 1650, icon: "📣", detail: "22-28k brutos", source: "Adecco", approx: "~1.650€" },
-  { label: "Abogado/a Jr", value: 1600, icon: "⚖️", detail: "21-26k brutos", source: "InfoJobs", approx: "~1.600€" },
+  { label: "Ing. Telecom", value: 1950, icon: "🛰️", detail: "27k brutos", source: "Indeed" },
+  { label: "Ing. Telecom Mid", value: 2650, icon: "📡", detail: "38k brutos", source: "Jobted" },
+  { label: "Ing. Telecom Sr", value: 3400, icon: "🚀", detail: "52k brutos", source: "InfoJobs", highlight: true },
+  { label: "Analista Datos Jr", value: 1550, icon: "📊", detail: "22k brutos", source: "ESERP" },
+  { label: "Analista Datos Mid", value: 1950, icon: "📈", detail: "28k brutos", source: "InfoJobs" },
+  { label: "Analista Datos Sr", value: 2500, icon: "💼", detail: "36k brutos", source: "Glassdoor" },
+  { label: "Enfermero/a", value: 1800, icon: "👩‍⚕️", detail: "28-35k", source: "OficinaEmpleo" },
+  { label: "Docente", value: 1900, icon: "👩‍🏫", detail: "29-35k", source: "BOE" },
+  { label: "Dev Junior", value: 1750, icon: "💻", detail: "24-30k", source: "InfoJobs" },
+  { label: "Dev Senior", value: 3100, icon: "🧠", detail: "45-60k", source: "InfoJobs" },
+  { label: "Marketing", value: 1650, icon: "📣", detail: "22-28k", source: "Adecco" },
+  { label: "Abogado/a Jr", value: 1600, icon: "⚖️", detail: "21-26k", source: "InfoJobs" },
 ] as const;
 
 export const QUICK_SALARY_PAIRS = [
-  { id: "pareja-real", label: "Vosotros 💜 Teleco UCM + Europea BA Jr", a: 1950, b: 1550, note: "Complu > Europea · recién egresados" },
-  { id: "pareja-mid", label: "Mid · Teleco Mid + BA Mid", a: 2650, b: 1950, note: "38k vs 28k brutos" },
-  { id: "pareja-senior", label: "Senior 🚀 Teleco Sr + BA Sr", a: 3400, b: 2450, note: "52k vs 36k brutos" },
+  { id: "pareja-joven", label: "Pareja joven 💜", a: 1950, b: 1550, note: "27k + 22k brutos" },
+  { id: "pareja-mid", label: "Pareja media ✨", a: 2650, b: 1950, note: "38k + 28k brutos" },
+  { id: "pareja-senior", label: "Pareja senior 🚀", a: 3400, b: 2500, note: "52k + 36k brutos" },
 ] as const;
 
 // 💹 Rentabilidades reales anualizadas (Curvo.eu, Mitrade, HistoryOfMarket)
@@ -123,7 +120,7 @@ export const RETURN_TABLE = [
   { year: 2019, msci: 30.12, sp500: 34.01, nasdaq: 41.66 },
 ] as const;
 
-// 🧾 Gastos comunes frecuentes en pareja España — chips + custom
+// 🧾 Gastos comunes frecuentes — chips + custom
 export const EXPENSE_PRESETS = [
   { label: "Alquiler", amount: 1100, icon: "🏠", category: "Vivienda" },
   { label: "Hipoteca", amount: 850, icon: "🏦", category: "Vivienda" },
