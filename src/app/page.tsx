@@ -1,69 +1,69 @@
-import Image from "next/image";
+"use client";
+import { Header } from "@/components/Header";
+import { SalaryConfigurator } from "@/components/SalaryConfigurator";
+import { ExpenseManager } from "@/components/ExpenseManager";
+import { DateFund } from "@/components/DateFund";
+import { InvestmentSimulator } from "@/components/InvestmentSimulator";
+import { GuiltyPleasure } from "@/components/GuiltyPleasure";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      <Header />
+      <main className="flex-1 max-w-6xl mx-auto w-full px-4 sm:px-6 py-6 sm:py-8">
+        {/* Hero */}
+        <div className="rounded-[24px] bg-gradient-to-br from-violet-600 via-indigo-600 to-fuchsia-600 p-[1px] mb-6">
+          <div className="rounded-[23px] bg-gradient-to-br from-violet-600 via-indigo-600 to-fuchsia-600 px-6 py-6 sm:px-8 sm:py-7 text-white">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <div>
+                <h2 className="text-xl sm:text-2xl font-black tracking-tight">Finanzas en pareja, sin drama 💜</h2>
+                <p className="text-sm sm:text-[15px] opacity-90 mt-1 max-w-2xl leading-relaxed">
+                  Reparto proporcional al salario, gastos liquidados al instante, citas con presupuesto y vuestra futura libertad
+                  financiera visualizada.
+                </p>
+              </div>
+              <div className="flex items-center gap-2 text-xs font-semibold bg-white/15 backdrop-blur rounded-full px-4 py-2 self-start sm:self-auto">
+                <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" /> 100% local · sin backend · PWA
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          {/* Left column */}
+          <div className="lg:col-span-7 space-y-6">
+            <SalaryConfigurator />
+            <ExpenseManager />
+            <GuiltyPleasure />
+          </div>
+          {/* Right column */}
+          <div className="lg:col-span-5 space-y-6">
+            <DateFund />
+            <InvestmentSimulator />
+            {/* Tips card */}
+            <div className="rounded-[20px] bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-5">
+              <h3 className="font-semibold text-zinc-900 dark:text-white text-sm">💡 Cómo funciona el reparto proporcional</h3>
+              <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-2 leading-relaxed">
+                Si <b>Alex</b> gana 2.500€ y <b>Sam</b> 1.800€ (total 4.300€), Alex aporta el{" "}
+                <b>58,1%</b> y Sam el <b>41,9%</b> de cada gasto común. Un alquiler de 1.200€ se divide en{" "}
+                <b>697€ / 503€</b> en lugar de 600/600. Más justo, menos fricción.
+              </p>
+              <div className="mt-3 flex flex-wrap gap-2 text-xs">
+                <span className="px-2.5 py-1 rounded-full bg-violet-50 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300 font-medium">
+                  Método avalado por terapeutas financieros
+                </span>
+                <span className="px-2.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 font-medium">
+                  Se recalcula en vivo
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <footer className="mt-10 text-center text-xs text-zinc-400 pb-6">
+          Hecho con 💜 para parejas que construyen futuro juntas · SyncUs v1.0 · Datos guardados localmente en tu navegador
+        </footer>
       </main>
-    </div>
+    </>
   );
 }
